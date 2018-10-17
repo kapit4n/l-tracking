@@ -11,10 +11,10 @@
       </tr>
       <tr v-for="ti in times" v-bind:key="ti.key">
         <td>
-        {{ti.startHour}}
+        {{ti.startHour}}: {{ti.startMin}}
         </td>
         <td>
-        16:23
+          {{ti.endHour}}: {{ti.endMin}}
         </td>
       </tr>
       <tr>
@@ -31,12 +31,31 @@
 
 <script>
 export default {
-  name: 'TimeTracker',
+  name: "TimeTracker",
   props: {
-    msg: String,
-    times: Array
+    msg: String
+  },
+  data() {
+    return {
+      times: [
+        {
+          key: 1,
+          startHour: 9,
+          startMin: 42,
+          endHour: 12,
+          endMin: 40
+        },
+        {
+          key: 2,
+          startHour: 13,
+          startMin: 0,
+          endHour: 17,
+          endMin: 9
+        }
+      ]
+    };
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
