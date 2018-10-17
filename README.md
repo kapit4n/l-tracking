@@ -24,3 +24,9 @@ npm run test
 ```
 npm run lint
 ```
+
+# Project features
+* click to start tracking
+* click to stop tracking
+* finish to sum all time tracked
+
