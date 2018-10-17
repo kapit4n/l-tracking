@@ -19,7 +19,7 @@
       </tr>
       <tr>
         <td colspan="2">
-          Total: 6:21:0
+          Total: {{totalHour}} : {{totalMin}}
         </td>
       </tr>      
     </table>
@@ -37,22 +37,30 @@ export default {
   },
   data() {
     return {
+      /*
+      9, 45
+      12, 15
+      12, 30
+      18, 0
+      */
       times: [
         {
           key: 1,
           startHour: 9,
-          startMin: 42,
+          startMin: 45,
           endHour: 12,
-          endMin: 40
+          endMin: 15
         },
         {
           key: 2,
-          startHour: 13,
-          startMin: 0,
-          endHour: 17,
-          endMin: 9
+          startHour: 12,
+          startMin: 30,
+          endHour: 18,
+          endMin: 0
         }
-      ]
+      ],
+      totalHour: 8,
+      totalMin: 0
     };
   }
 };
