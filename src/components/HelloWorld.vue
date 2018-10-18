@@ -30,11 +30,14 @@
     <button v-on:click="add()">add</button>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    {{ info }}
   </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: "TimeTracker",
   props: {
@@ -55,7 +58,8 @@ export default {
       startHour: 9,
       startMin: 30,
       endHour: 12,
-      endMin: 30
+      endMin: 30,
+      info: null
     };
   },
   methods: {
@@ -84,6 +88,11 @@ export default {
       this.$data.totalHour = hours;
       this.$data.totalMin = mins;
     }
+  },
+  mounted () {
+    axios
+      .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+      .then(response => (this.info = response))
   }
 };
 </script>
