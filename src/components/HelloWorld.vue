@@ -23,6 +23,11 @@
         </td>
       </tr>      
     </table>
+    <input type="number" v-model="startHour" placeholder="Start Hour">
+    <input type="number" v-model="startMin" placeholder="Start Minute">
+    <input type="number" v-model="endHour" placeholder="End Hour">
+    <input type="number" v-model="endMin" placeholder="End Minute">
+    <button v-on:click="add()">add</button>
   <div class="hello">
     <h1>{{ msg }}</h1>
   </div>
@@ -38,30 +43,47 @@ export default {
   data() {
     return {
       /*
-      9, 45
+      2
+      9, 34
       12, 15
-      12, 30
-      18, 0
       */
       times: [
-        {
-          key: 1,
-          startHour: 9,
-          startMin: 45,
-          endHour: 12,
-          endMin: 15
-        },
-        {
-          key: 2,
-          startHour: 12,
-          startMin: 30,
-          endHour: 18,
-          endMin: 0
-        }
       ],
-      totalHour: 8,
-      totalMin: 0
+      totalHour: 0,
+      totalMin: 0,
+      lastKey: 0,
+      startHour: 9,
+      startMin: 30,
+      endHour: 12,
+      endMin: 30
     };
+  },
+  methods: {
+    add: function() {
+      this.lastKey += 1;
+      this.$data.times.push({
+        key: this.lastKey,
+        startHour: this.$data.startHour,
+        startMin: this.$data.startMin,
+        endHour: this.$data.endHour,
+        endMin: this.$data.endMin
+      });
+      this.calc();
+    },
+    calc: function() {
+      let times = this.$data.times;
+      let resTime = 0;
+      for (let i = 0; i < times.length; i++) {
+        console.log(times[i]);
+        let startTime = new Date( 2018, 10, 18, times[i].startHour, times[i].startMin, 0, 0 );
+        let endTime = new Date( 2018, 10, 18, times[i].endHour, times[i].endMin, 0, 0 );
+        resTime += endTime.getTime() - startTime.getTime();
+      }
+      let hours = Math.trunc(resTime / 1000 / 60 / 60);
+      let mins = (resTime / 1000 / 60) % 60;
+      this.$data.totalHour = hours;
+      this.$data.totalMin = mins;
+    }
   }
 };
 </script>
