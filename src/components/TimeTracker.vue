@@ -8,6 +8,10 @@
         <th>
           End date
         </th>
+        <th>
+          
+        </th>
+
       </tr>
       <tr v-for="ti in times" v-bind:key="ti.key">
         <td>
@@ -15,6 +19,9 @@
         </td>
         <td>
           {{ti.endHour}}: {{ti.endMin}}
+        </td>
+        <td>
+          <button v-on:click="remove(ti)">x</button>
         </td>
       </tr>
       <tr>
@@ -29,8 +36,7 @@
     <input type="number" v-model="endMin" placeholder="End Minute">
     <button v-on:click="add()">add</button>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    {{ info }}
+    
   </div>
   </div>
 </template>
@@ -72,13 +78,14 @@ export default {
         endHour: this.$data.endHour,
         endMin: this.$data.endMin
       });
+      this.$data.startHour = this.$data.endHour;
+      this.$data.startMin = this.$data.endMin;
       this.calc();
     },
     calc: function() {
       let times = this.$data.times;
       let resTime = 0;
       for (let i = 0; i < times.length; i++) {
-        console.log(times[i]);
         let startTime = new Date( 2018, 10, 18, times[i].startHour, times[i].startMin, 0, 0 );
         let endTime = new Date( 2018, 10, 18, times[i].endHour, times[i].endMin, 0, 0 );
         resTime += endTime.getTime() - startTime.getTime();
@@ -87,6 +94,10 @@ export default {
       let mins = (resTime / 1000 / 60) % 60;
       this.$data.totalHour = hours;
       this.$data.totalMin = mins;
+    },
+    remove: function(ti) {
+      this.$data.times = this.$data.times.filter(x => x.key != ti.key);
+      this.calc();
     }
   },
   mounted () {
