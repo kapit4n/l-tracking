@@ -3,13 +3,10 @@
     <table>
       <tr>
         <th>
-          Start date
+          Start Time
         </th>
         <th>
-          End date
-        </th>
-        <th>
-          
+          End Time
         </th>
 
       </tr>
@@ -25,16 +22,24 @@
         </td>
       </tr>
       <tr>
+        <td>
+          <input type="number" v-model="startHour" placeholder="Start Hour">:
+          <input type="number" v-model="startMin" placeholder="Start Minute">
+        </td>
+        <td>
+          <input type="number" v-model="endHour" placeholder="End Hour">
+          <input type="number" v-model="endMin" placeholder="End Minute">
+        </td>
+        <td>
+          <button v-on:click="add()">add</button>
+        </td>
+      </tr>
+      <tr>
         <td colspan="2">
           Total: {{totalHour}} : {{totalMin}}
         </td>
       </tr>      
     </table>
-    <input type="number" v-model="startHour" placeholder="Start Hour">
-    <input type="number" v-model="startMin" placeholder="Start Minute">
-    <input type="number" v-model="endHour" placeholder="End Hour">
-    <input type="number" v-model="endMin" placeholder="End Minute">
-    <button v-on:click="add()">add</button>
   <div class="hello">
     
   </div>
