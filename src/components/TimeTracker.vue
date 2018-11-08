@@ -8,7 +8,6 @@
         <th>
           End Time
         </th>
-
       </tr>
       <tr v-for="ti in times" v-bind:key="ti.key">
         <td>
@@ -56,20 +55,15 @@ export default {
   },
   data() {
     return {
-      /*
-      2
-      9, 34
-      12, 15
-      */
       times: [
       ],
       totalHour: 0,
       totalMin: 0,
       lastKey: 0,
       startHour: 9,
-      startMin: 30,
-      endHour: 12,
-      endMin: 30,
+      startMin: 20,
+      endHour: new Date().getHours(),
+      endMin: new Date().getMinutes(),
       info: null
     };
   },
@@ -85,6 +79,10 @@ export default {
       });
       this.$data.startHour = this.$data.endHour;
       this.$data.startMin = this.$data.endMin;
+      
+      this.$data.endHour = new Date().getHours();
+      this.$data.endMin = new Date().getMinutes();
+
       this.calc();
     },
     calc: function() {
