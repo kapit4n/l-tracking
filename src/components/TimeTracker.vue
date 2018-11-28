@@ -31,6 +31,7 @@
         </td>
         <td>
           <button v-on:click="add()">add</button>
+          <button v-on:click="save()">save</button>
         </td>
       </tr>
       <tr>
@@ -84,6 +85,9 @@ export default {
       this.$data.endMin = new Date().getMinutes();
 
       this.calc();
+    },
+    save: function() {
+      console.log("Save it");
     },
     calc: function() {
       let times = this.$data.times;

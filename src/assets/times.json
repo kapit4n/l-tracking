@@ -1,0 +1,14 @@
+[ {
+          "key":"1", 
+          "startHour":"9", 
+          "startMin":"2", 
+          "endHour":"12", 
+          "endMin":"20"
+    },  {
+          "key":"2", 
+          "startHour":"12", 
+          "startMin":"50", 
+          "endHour":"16", 
+          "endMin":"4"
+    }
+]
