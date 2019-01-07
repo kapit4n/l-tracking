@@ -8,9 +8,15 @@ Vue.use(Router)
 export default new Router({
     routes: [
         {
-            path: '/',
+            path: '/view',
             name: 'TimeTrackerView',
             component: TimeTrackerView
-        }
+        },
+        {
+            path: '/',
+            name: 'TimeTrackerView',
+            component: TimeTracker
+        },
+
     ]
 })
