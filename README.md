@@ -1,4 +1,5 @@
 # done-it
+![Tracker](https://raw.githubusercontent.com/kapit4n/l-tracking/master/mockups/done-it-home.png)
 
 ## Project setup
 ```
