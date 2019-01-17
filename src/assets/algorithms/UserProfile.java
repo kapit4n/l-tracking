@@ -7,6 +7,11 @@ class UserProfile {
         this.skills = new String[]{"Software Developer", "Java", "Scala"};
     }
 
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public String[] getSkills() { return this.skills; };
+    public void setSkills(String[] skills) { this.skills = skills; }
+
     public String toString() {
         String res = "";
         res += this.name + "\n";
