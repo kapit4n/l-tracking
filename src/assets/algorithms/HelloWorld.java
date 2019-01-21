@@ -3,13 +3,24 @@ class HelloWorld {
     public static void main(String[] args) {
         UserProfile user = new UserProfile("Luis Arce");
         System.out.println(user);
+        testNumber();
+    }
 
+    public static void testNumber() {
+        
+        double dat1 = 5.0;
+        double dat2 = 0.10;
+        double dat3 = 0.010;
+        double res = dat1 - dat2 - dat3;
+        System.out.println(res);
+    }
+
+    public static testSort() {
         int test[] = new int[] {1, 3, 5, 1, 2};
         printArray(test);
         //System.out.println("Steps to short it with BubbleSort: " + bubbleSort(test));
         quickSort(test, 0, test.length-1);
         printArray(test);
-
     }
 
     public static int bubbleSort(int arr[]) {
