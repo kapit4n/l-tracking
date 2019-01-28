@@ -62,7 +62,7 @@ export default {
       totalMin: 0,
       lastKey: 0,
       startHour: 9,
-      startMin: 20,
+      startMin: 10,
       endHour: new Date().getHours(),
       endMin: new Date().getMinutes(),
       info: null
@@ -87,7 +87,7 @@ export default {
       this.calc();
     },
     save: function() {
-      console.log("Save it");
+      // console.log("Save it");
     },
     calc: function() {
       let times = this.$data.times;
@@ -109,8 +109,18 @@ export default {
   },
   mounted () {
     axios
-      .get('https://api.coindesk.com/v1/bpi/currentprice.json')
-      .then(response => (this.info = response))
+      .get('http://localhost:8080/intervals')
+      .then(response => {
+        if (response.data) {
+          this.times = response.data;
+          console.log(this.info);
+          this.calc();
+        }
+      },
+      reason => {
+        console.log("Error");
+      }
+      )
   }
 };
 </script>
